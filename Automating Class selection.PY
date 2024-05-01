@@ -6,9 +6,16 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 import time
 
+'''Caution and probable fix
+    Many xpath used are static and do not meet the standards of writing an xpath
+    The reason why the code might not be working is due to the change in the elements on the web page.
+    If you see an element cannot be clicked - try searching ways to get a xpath and update the xpath.
+    Apologies for not following the standards. Hope you get your required course all the best!
+'''
+
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
-options.add_argument('--headless')  
+options.add_argument('--headless')  # Comment this line to see the User Interface of the browser
 # Initialize the Chrome driver
 driver = webdriver.Chrome(options=options)
 
@@ -62,6 +69,7 @@ try:
     time.sleep(5)
     WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,"//input[@id='DERIVED_REGFRM1_CLASS_NBR']"))).click()
     # Iterate through the new dropdown options
+    # List all the courses you want to try adding to your schedule
     course_list = ['11088','26559','19657','24342']
     while True :
         for course in course_list:
